@@ -306,8 +306,8 @@ const App = () => {
     <div style={{ padding: '40px 20px', maxWidth: '1000px', margin: '0 auto' }}>
       <div style={{ textAlign: 'center', marginBottom: '50px' }}>
         <Hexagon size={80} color={colors.primary} strokeWidth={1.5} style={{ marginBottom: '20px' }} />
-        <h1 style={{ fontFamily: titleFont, fontSize: fs.xxxl, color: colors.primary, marginBottom: '20px' }}>R75 OBSERVATORY</h1>
-        <p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.primary, maxWidth: '700px', margin: '0 auto', lineHeight: 1.6 }}>L'observatoire citoyen de la concentration des médias et de l'évolution législative en France et en Europe depuis 2017.</p>
+        <h1 style={{ fontFamily: titleFont, fontSize: fs.xxxl, color: colors.primary, marginBottom: '20px' }}>R75 OBSERVATOIRE CITOYEN</h1>
+        <p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.primary, maxWidth: '700px', margin: '0 auto', lineHeight: 1.6 }}>Lire entre les lignes, relier les événements et connecter les points que d'autres préfèrent laisser épars - médias, lois, pouvoir.. depuis 2017</p>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '40px' }}>
         {modules.filter(m => m.id !== 'home').map(mod => { const IconComponent = mod.icon; return (<button key={mod.id} onClick={() => setActiveModule(mod.id)} style={{ padding: '30px 20px', background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '8px', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.borderColor = colors.primary; e.currentTarget.style.transform = 'translateY(-3px)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor = colors.cardBorder; e.currentTarget.style.transform = 'translateY(0)'; }}><IconComponent size={44} color={colors.primary} strokeWidth={1.5} style={{ marginBottom: '15px' }} /><h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '10px' }}>{mod.name}</h3><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>{mod.id === 'timeline' && 'Frise chronologique depuis 2017'}{mod.id === 'reseau' && 'Cartographie oligarques/médias'}{mod.id === 'carte' && 'Implantation géographique'}{mod.id === 'threads' && 'Générateur de threads'}{mod.id === 'comparateur' && 'Lois avant/après'}{mod.id === 'projet' && 'Propositions R75'}</p></button>); })}
@@ -524,7 +524,7 @@ const App = () => {
       <footer style={{ background: colors.cardBg, borderTop: `2px solid ${colors.cardBorder}`, padding: '30px 20px', textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '10px' }}><Hexagon size={24} color={colors.primary} /><p style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary }}>OBSERVATOIRE CITOYEN R75</p></div>
         <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Données vérifiables</p>
-        <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginTop: '15px' }}>© 2026 Observatoire R75</p>
+        <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginTop: '15px' }}>© 2026 R75</p>
       </footer>
     </div>
   );
