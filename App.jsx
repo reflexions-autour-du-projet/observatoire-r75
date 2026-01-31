@@ -281,8 +281,8 @@ const App = () => {
         <div onClick={() => setActiveModule('home')} style={{ cursor: 'pointer', display: 'flex', alignItems: 'center', gap: '12px' }}>
           <Hexagon size={40} color={colors.primary} strokeWidth={2} />
           <div>
-            <h1 style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, margin: 0 }}>R75 OBSERVATORY</h1>
-            <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, margin: 0 }}>Observatoire des Médias</p>
+            <h1 style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, margin: 0 }}>OBSERVATOIRE CITOYEN</h1>
+            <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, margin: 0 }}>R75</p>
           </div>
         </div>
         <div style={{ display: 'flex', gap: '10px', alignItems: 'center' }}>
@@ -523,7 +523,7 @@ const App = () => {
       </main>
       <footer style={{ background: colors.cardBg, borderTop: `2px solid ${colors.cardBorder}`, padding: '30px 20px', textAlign: 'center' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '10px' }}><Hexagon size={24} color={colors.primary} /><p style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary }}>OBSERVATOIRE CITOYEN R75</p></div>
-        <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Observatoire citoyen • Données vérifiables</p>
+        <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Données vérifiables</p>
         <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginTop: '15px' }}>© 2026 Observatoire R75</p>
       </footer>
     </div>
