@@ -259,7 +259,7 @@ const App = () => {
       { titre: '4. Éduquer aux médias', icon: GraduationCap, propositions: ['Éducation aux médias obligatoire', 'Transparence des algorithmes', 'Labellisation qualité'] },
       { titre: '5. Réformer l\'audiovisuel public', icon: Tv, propositions: ['Financement indépendant', 'Gouvernance citoyenne', 'Interdiction de la publicité'] },
     ],
-    conclusion: "Une démocratie saine nécessite une information libre, pluraliste et accessible à tous",
+    conclusion: "De fleur en fleur, d'idée en idée, ensemble, pollinisons le débat public",
   };
 
   const modules = [
@@ -490,7 +490,7 @@ const App = () => {
       {projetR75.axes.map((axe, i) => { const IconComp = axe.icon; return (<div key={i} style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', marginBottom: '20px' }}><h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '20px', paddingBottom: '15px', borderBottom: `2px solid ${colors.cardBorder}`, display: 'flex', alignItems: 'center', gap: '12px' }}><IconComp size={28} />{axe.titre}</h3><ul style={{ fontFamily: textFont, fontSize: fs.base, color: colors.primary, lineHeight: 1.8, paddingLeft: '0', listStyle: 'none' }}>{axe.propositions.map((prop, j) => (<li key={j} style={{ marginBottom: '15px', paddingLeft: '35px', position: 'relative', display: 'flex', alignItems: 'flex-start', gap: '12px' }}><CheckCircle size={20} color={colors.primary} style={{ position: 'absolute', left: 0, top: '2px' }} />{prop}</li>))}</ul></div>); })}
       <div style={{ background: colors.primary, borderRadius: '12px', padding: '30px', marginTop: '30px' }}>
         <p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.bg, lineHeight: 1.8, textAlign: 'center' }}>{projetR75.conclusion}</p>
-        <p style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.bg, textAlign: 'center', marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}><Hexagon size={28} />Butinons notre futur !</p>
+        <p style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.bg, textAlign: 'center', marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}><Hexagon size={28} />Butiner l'information, polliniser les consciences, cultiver le débat</p>
       </div>
     </div>
   );
