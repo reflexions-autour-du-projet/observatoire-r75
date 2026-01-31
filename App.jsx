@@ -11,7 +11,7 @@ import {
 } from 'lucide-react';
 
 // ═══════════════════════════════════════════════════════════════════════════════
-// R75 OBSERVATORY — Observatoire Politique des Médias
+// OBSERVATOIRE CITOYEN — R75
 // Version 2.0 — Flamengo Font + Lucide Icons
 // ═══════════════════════════════════════════════════════════════════════════════
 
@@ -249,9 +249,9 @@ const App = () => {
   // DONNÉES — PROJET R75
   // ═══════════════════════════════════════════════════════════════════════════
   const projetR75 = {
-    titre: 'LE PROJET R75',
+    titre: 'LE PROJET',
     sousTitre: 'Pour une information libre et pluraliste',
-    introduction: "Face à la concentration des médias, La Ruche 75 propose un projet de réforme structurelle pour garantir l'indépendance de l'information.",
+    introduction: "Face à la concentration des médias, Le Projet propose un projet de réforme structurelle pour garantir l'indépendance de l'information.",
     axes: [
       { titre: '1. Limiter la concentration', icon: Shield, propositions: ['Plafonnement des parts de marché à 30%', 'Interdiction pour les entreprises sous marchés publics', 'Autorité indépendante de contrôle'] },
       { titre: '2. Garantir l\'indépendance', icon: FileText, propositions: ['Droit d\'agrément des rédactions', 'Chartes éthiques obligatoires', 'Protection des sources'] },
@@ -259,7 +259,7 @@ const App = () => {
       { titre: '4. Éduquer aux médias', icon: GraduationCap, propositions: ['Éducation aux médias obligatoire', 'Transparence des algorithmes', 'Labellisation qualité'] },
       { titre: '5. Réformer l\'audiovisuel public', icon: Tv, propositions: ['Financement indépendant', 'Gouvernance citoyenne', 'Interdiction de la publicité'] },
     ],
-    conclusion: "Une démocratie saine nécessite une information libre, pluraliste et accessible à tous.",
+    conclusion: "Une démocratie saine nécessite une information libre, pluraliste et accessible à tous",
   };
 
   const modules = [
@@ -420,8 +420,8 @@ const App = () => {
         `1/ ${o.nom} pèse ${o.fortune}. Sa fortune vient de ${o.secteurs.slice(0, -1).join(', ')}.\n\nMais depuis quelques années, il s'intéresse de très près à nos médias.`,
         `2/ Son empire médiatique comprend :\n\n${o.medias.map(m => `• ${m.nom} (${m.type})`).join('\n')}\n\nSoit ${o.medias.length} médias.`,
         `3/ Les conflits d'intérêts :\n\n${o.conflits.map(c => `• ${c}`).join('\n')}`,
-        `4/ Face à cette concentration, @Ruche75 propose :\n\n✅ Limiter les parts de marché à 30%\n✅ Interdire aux entreprises sous marchés publics de posséder des médias\n✅ Garantir l'indépendance des rédactions`,
-        `5/ L'information ne devrait pas être une marchandise.\n\nPartagez ce thread pour informer.\n\n🐝 @Ruche75\n\n#Médias #Oligarchie #InformationLibre`,
+        `4/ Face à cette concentration, Le Projet propose :\n\n✅ Limiter les parts de marché à 30%\n✅ Interdire aux entreprises sous marchés publics de posséder des médias\n✅ Garantir l'indépendance des rédactions`,
+        `5/ L'information ne devrait pas être une marchandise.\n\nPartagez ce thread pour informer.\n\n🐝 LeProjet\n\n#Médias #Oligarchie #InformationLibre`,
       ];
       setGeneratedThread(thread);
     };
@@ -522,9 +522,9 @@ const App = () => {
         {activeModule === 'projet' && <ProjetModule />}
       </main>
       <footer style={{ background: colors.cardBg, borderTop: `2px solid ${colors.cardBorder}`, padding: '30px 20px', textAlign: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '10px' }}><Hexagon size={24} color={colors.primary} /><p style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary }}>LA RUCHE 75</p></div>
-        <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Observatoire citoyen des médias • Données vérifiables</p>
-        <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginTop: '15px' }}>© 2026 R75 Observatory</p>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '10px' }}><Hexagon size={24} color={colors.primary} /><p style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary }}>OBSERVATOIRE CITOYEN R75</p></div>
+        <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Observatoire citoyen • Données vérifiables</p>
+        <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginTop: '15px' }}>© 2026 Observatoire R75</p>
       </footer>
     </div>
   );
