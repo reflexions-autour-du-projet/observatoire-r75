@@ -1,7 +1,7 @@
 {
   "name": "r75-observatory",
   "version": "1.0.0",
-  "description": "R75 Observatory - Observatoire Politique des Médias - Timeline, Réseau, Carte, Threads, Comparateur",
+  "description": "Observatoire Citoyen - Timeline, Réseau, Carte, Threads, Comparateur",
   "private": true,
   "scripts": {
     "dev": "vite",
