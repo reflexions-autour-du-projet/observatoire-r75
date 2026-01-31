@@ -294,7 +294,31 @@ const App = () => {
         </div>
       </div>
       <nav style={{ maxWidth: '1400px', margin: '15px auto 0', display: 'flex', gap: '5px', flexWrap: 'wrap' }}>
-        {modules.map(mod => { const IconComponent = mod.icon; return (<button key={mod.id} onClick={() => setActiveModule(mod.id)} style={{ padding: '10px 18px', background: activeModule === mod.id ? colors.primary : 'transparent', border: `1px solid ${colors.primary}`, color: activeModule === mod.id ? colors.bg : colors.primary, borderRadius: '4px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.sm, display: 'flex', alignItems: 'center', gap: '8px' }}><IconComponent size={18} /><span>{mod.name}</span></button>); })}
+        {modules.map(mod => { 
+          const IconComponent = mod.icon; 
+          return (
+            <button 
+              key={mod.id} 
+              onClick={() => setActiveModule(mod.id)} 
+              style={{ 
+                padding: '10px 18px', 
+                background: activeModule === mod.id ? colors.primary : 'transparent', 
+                border: `1px solid ${colors.primary}`, 
+                color: activeModule === mod.id ? colors.bg : colors.primary, 
+                borderRadius: '4px', 
+                cursor: 'pointer', 
+                fontFamily: textFont, 
+                fontSize: fs.sm, 
+                display: 'flex', 
+                alignItems: 'center', 
+                gap: '8px' 
+              }}
+            >
+              <IconComponent size={18} />
+              <span>{mod.name}</span>
+            </button>
+          ); 
+        })}
       </nav>
     </header>
   );
@@ -307,16 +331,64 @@ const App = () => {
       <div style={{ textAlign: 'center', marginBottom: '50px' }}>
         <Hexagon size={80} color={colors.primary} strokeWidth={1.5} style={{ marginBottom: '20px' }} />
         <h1 style={{ fontFamily: titleFont, fontSize: fs.xxxl, color: colors.primary, marginBottom: '20px' }}>R75 OBSERVATOIRE CITOYEN</h1>
-        <p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.primary, maxWidth: '700px', margin: '0 auto', lineHeight: 1.6 }}>Lire entre les lignes, relier les événements et connecter les points que d'autres préfèrent laisser épars - médias, lois, pouvoir.. depuis 2017</p>
+        <p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.primary, maxWidth: '700px', margin: '0 auto', lineHeight: 1.6 }}>
+          Lire entre les lignes, relier les événements et connecter les points que d'autres préfèrent laisser épars - médias, lois, pouvoir.. depuis 2017
+        </p>
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '40px' }}>
-        {modules.filter(m => m.id !== 'home').map(mod => { const IconComponent = mod.icon; return (<button key={mod.id} onClick={() => setActiveModule(mod.id)} style={{ padding: '30px 20px', background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '8px', cursor: 'pointer', textAlign: 'left', transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.borderColor = colors.primary; e.currentTarget.style.transform = 'translateY(-3px)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor = colors.cardBorder; e.currentTarget.style.transform = 'translateY(0)'; }}><IconComponent size={44} color={colors.primary} strokeWidth={1.5} style={{ marginBottom: '15px' }} /><h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '10px' }}>{mod.name}</h3><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>{mod.id === 'timeline' && 'Frise chronologique depuis 2017'}{mod.id === 'reseau' && 'Cartographie oligarques/médias'}{mod.id === 'carte' && 'Implantation géographique'}{mod.id === 'threads' && 'Générateur de threads'}{mod.id === 'comparateur' && 'Lois avant/après'}{mod.id === 'projet' && 'Propositions R75'}</p></button>); })}
+        {modules.filter(m => m.id !== 'home').map(mod => { 
+          const IconComponent = mod.icon; 
+          return (
+            <button 
+              key={mod.id} 
+              onClick={() => setActiveModule(mod.id)} 
+              style={{ 
+                padding: '30px 20px', 
+                background: colors.cardBg, 
+                border: `2px solid ${colors.cardBorder}`, 
+                borderRadius: '8px', 
+                cursor: 'pointer', 
+                textAlign: 'left', 
+                transition: 'all 0.2s' 
+              }} 
+              onMouseEnter={e => { e.currentTarget.style.borderColor = colors.primary; e.currentTarget.style.transform = 'translateY(-3px)'; }} 
+              onMouseLeave={e => { e.currentTarget.style.borderColor = colors.cardBorder; e.currentTarget.style.transform = 'translateY(0)'; }}
+            >
+              <IconComponent size={44} color={colors.primary} strokeWidth={1.5} style={{ marginBottom: '15px' }} />
+              <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '10px' }}>{mod.name}</h3>
+              <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>
+                {mod.id === 'timeline' && 'Frise chronologique depuis 2017'}
+                {mod.id === 'reseau' && 'Cartographie oligarques/médias'}
+                {mod.id === 'carte' && 'Implantation géographique'}
+                {mod.id === 'threads' && 'Générateur de threads'}
+                {mod.id === 'comparateur' && 'Lois avant/après'}
+                {mod.id === 'projet' && 'Propositions R75'}
+              </p>
+            </button>
+          ); 
+        })}
       </div>
       <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(150px, 1fr))', gap: '15px', padding: '30px', background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '8px' }}>
-        <div style={{ textAlign: 'center' }}><Users size={32} color={colors.primary} style={{ marginBottom: '10px' }} /><p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>9</p><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Oligarques</p></div>
-        <div style={{ textAlign: 'center' }}><Tv size={32} color={colors.primary} style={{ marginBottom: '10px' }} /><p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>{oligarques.reduce((acc, o) => acc + o.medias.length, 0)}</p><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Médias</p></div>
-        <div style={{ textAlign: 'center' }}><Clock size={32} color={colors.primary} style={{ marginBottom: '10px' }} /><p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>{timelineEvents.length}</p><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Événements</p></div>
-        <div style={{ textAlign: 'center' }}><Scale size={32} color={colors.primary} style={{ marginBottom: '10px' }} /><p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>{loisComparees.length}</p><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Lois</p></div>
+        <div style={{ textAlign: 'center' }}>
+          <Users size={32} color={colors.primary} style={{ marginBottom: '10px' }} />
+          <p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>9</p>
+          <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Oligarques</p>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <Tv size={32} color={colors.primary} style={{ marginBottom: '10px' }} />
+          <p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>{oligarques.reduce((acc, o) => acc + o.medias.length, 0)}</p>
+          <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Médias</p>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <Clock size={32} color={colors.primary} style={{ marginBottom: '10px' }} />
+          <p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>{timelineEvents.length}</p>
+          <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Événements</p>
+        </div>
+        <div style={{ textAlign: 'center' }}>
+          <Scale size={32} color={colors.primary} style={{ marginBottom: '10px' }} />
+          <p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>{loisComparees.length}</p>
+          <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Lois</p>
+        </div>
       </div>
     </div>
   );
@@ -339,11 +411,66 @@ const App = () => {
           <p style={{ fontFamily: textFont, fontSize: fs.base, color: colors.muted }}>Chronologie des événements majeurs</p>
         </div>
         <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '30px' }}>
-          {[{ id: 'all', label: 'Tous', icon: Filter }, { id: 'politique', label: 'Politique', icon: Landmark }, { id: 'media', label: 'Médias', icon: Tv }, { id: 'loi', label: 'Lois', icon: Gavel }].map(f => { const IconComp = f.icon; return (<button key={f.id} onClick={() => setFilterType(f.id)} style={{ padding: '10px 18px', background: filterType === f.id ? colors.primary : 'transparent', border: `1px solid ${colors.primary}`, color: filterType === f.id ? colors.bg : colors.primary, borderRadius: '20px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.sm, display: 'flex', alignItems: 'center', gap: '8px' }}><IconComp size={16} />{f.label}</button>); })}
+          {[{ id: 'all', label: 'Tous', icon: Filter }, { id: 'politique', label: 'Politique', icon: Landmark }, { id: 'media', label: 'Médias', icon: Tv }, { id: 'loi', label: 'Lois', icon: Gavel }].map(f => { 
+            const IconComp = f.icon; 
+            return (
+              <button 
+                key={f.id} 
+                onClick={() => setFilterType(f.id)} 
+                style={{ 
+                  padding: '10px 18px', 
+                  background: filterType === f.id ? colors.primary : 'transparent', 
+                  border: `1px solid ${colors.primary}`, 
+                  color: filterType === f.id ? colors.bg : colors.primary, 
+                  borderRadius: '20px', 
+                  cursor: 'pointer', 
+                  fontFamily: textFont, 
+                  fontSize: fs.sm, 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px' 
+                }}
+              >
+                <IconComp size={16} />{f.label}
+              </button>
+            ); 
+          })}
         </div>
         <div style={{ position: 'relative' }}>
           <div style={{ position: 'absolute', left: '50%', top: 0, bottom: 0, width: '4px', background: colors.cardBorder, transform: 'translateX(-50%)' }} />
-          {years.map(year => (<div key={year} style={{ marginBottom: '40px' }}><div style={{ textAlign: 'center', position: 'relative', zIndex: 1, marginBottom: '20px' }}><span style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, background: colors.bg, padding: '10px 30px', border: `3px solid ${colors.primary}`, borderRadius: '30px' }}>{year}</span></div>{filteredEvents.filter(e => e.date.startsWith(year)).map((event, idx) => { const TypeIcon = typeIcons[event.type]; return (<div key={idx} style={{ display: 'flex', justifyContent: idx % 2 === 0 ? 'flex-start' : 'flex-end', marginBottom: '20px', paddingLeft: idx % 2 === 0 ? 0 : '52%', paddingRight: idx % 2 === 0 ? '52%' : 0 }}><div style={{ background: colors.cardBg, border: `2px solid ${typeColors[event.type]}`, borderRadius: '8px', padding: '15px 20px', maxWidth: '100%', position: 'relative' }}><p style={{ fontFamily: textFont, fontSize: fs.xs, color: typeColors[event.type], marginBottom: '5px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '6px' }}><Clock size={12} />{new Date(event.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}</p><h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '8px' }}>{event.titre}</h4><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, lineHeight: 1.5, margin: 0 }}>{event.description}</p><span style={{ position: 'absolute', top: '10px', right: '10px', padding: '4px 10px', background: typeColors[event.type], color: colors.bg, borderRadius: '10px', fontFamily: textFont, fontSize: fs.xs, display: 'flex', alignItems: 'center', gap: '4px' }}><TypeIcon size={12} /></span></div></div>); })}</div>))}
+          {years.map(year => (
+            <div key={year} style={{ marginBottom: '40px' }}>
+              <div style={{ textAlign: 'center', position: 'relative', zIndex: 1, marginBottom: '20px' }}>
+                <span style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, background: colors.bg, padding: '10px 30px', border: `3px solid ${colors.primary}`, borderRadius: '30px' }}>{year}</span>
+              </div>
+              {filteredEvents.filter(e => e.date.startsWith(year)).map((event, idx) => { 
+                const TypeIcon = typeIcons[event.type]; 
+                return (
+                  <div 
+                    key={idx} 
+                    style={{ 
+                      display: 'flex', 
+                      justifyContent: idx % 2 === 0 ? 'flex-start' : 'flex-end', 
+                      marginBottom: '20px', 
+                      paddingLeft: idx % 2 === 0 ? 0 : '52%', 
+                      paddingRight: idx % 2 === 0 ? '52%' : 0 
+                    }}
+                  >
+                    <div style={{ background: colors.cardBg, border: `2px solid ${typeColors[event.type]}`, borderRadius: '8px', padding: '15px 20px', maxWidth: '100%', position: 'relative' }}>
+                      <p style={{ fontFamily: textFont, fontSize: fs.xs, color: typeColors[event.type], marginBottom: '5px', fontWeight: 'bold', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                        <Clock size={12} />{new Date(event.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'short' })}
+                      </p>
+                      <h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '8px' }}>{event.titre}</h4>
+                      <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, lineHeight: 1.5, margin: 0 }}>{event.description}</p>
+                      <span style={{ position: 'absolute', top: '10px', right: '10px', padding: '4px 10px', background: typeColors[event.type], color: colors.bg, borderRadius: '10px', fontFamily: textFont, fontSize: fs.xs, display: 'flex', alignItems: 'center', gap: '4px' }}>
+                        <TypeIcon size={12} />
+                      </span>
+                    </div>
+                  </div>
+                ); 
+              })}
+            </div>
+          ))}
         </div>
       </div>
     );
@@ -354,6 +481,7 @@ const App = () => {
   // ═══════════════════════════════════════════════════════════════════════════
   const ReseauModule = () => {
     const [selectedOligarque, setSelectedOligarque] = useState(null);
+    
     return (
       <div style={{ padding: '30px 20px', maxWidth: '1400px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
@@ -361,8 +489,113 @@ const App = () => {
           <h2 style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, marginBottom: '10px' }}>RÉSEAU OLIGARCHIQUE</h2>
           <p style={{ fontFamily: textFont, fontSize: fs.base, color: colors.muted }}>Qui possède quoi ?</p>
         </div>
-        {!selectedOligarque && (<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>{oligarques.map(o => { const IconComp = o.icon; return (<div key={o.id} onClick={() => setSelectedOligarque(o)} style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.borderColor = colors.primary; e.currentTarget.style.transform = 'scale(1.02)'; }} onMouseLeave={e => { e.currentTarget.style.borderColor = colors.cardBorder; e.currentTarget.style.transform = 'scale(1)'; }}><div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '15px' }}><div style={{ width: '60px', height: '60px', borderRadius: '50%', background: colors.bg, border: `2px solid ${colors.primary}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}><IconComp size={28} color={colors.primary} /></div><div><h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, margin: 0 }}>{o.nom}</h3><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, margin: 0 }}>{o.groupe}</p></div></div><p style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}><DollarSign size={20} />{o.fortune}</p><div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '15px' }}>{o.secteurs.map((s, i) => (<span key={i} style={{ fontSize: fs.xs, padding: '3px 10px', background: colors.bg, border: `1px solid ${colors.cardBorder}`, borderRadius: '15px', fontFamily: textFont, color: colors.muted }}>{s}</span>))}</div><p style={{ fontFamily: textFont, fontSize: fs.base, color: colors.primary, marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '8px' }}><Tv size={16} /><strong>{o.medias.length}</strong> médias</p><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.danger, display: 'flex', alignItems: 'center', gap: '8px' }}><AlertTriangle size={16} />{o.conflits.length} conflits</p></div>); })}</div>)}
-        {selectedOligarque && (<div><button onClick={() => setSelectedOligarque(null)} style={{ padding: '10px 20px', background: 'transparent', border: `2px solid ${colors.primary}`, color: colors.primary, borderRadius: '8px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.base, marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '8px' }}><ChevronLeft size={20} />Retour</button><div style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '30px' }}><div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px', flexWrap: 'wrap' }}><div style={{ width: '100px', height: '100px', borderRadius: '50%', background: colors.bg, border: `3px solid ${colors.primary}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>{React.createElement(selectedOligarque.icon, { size: 48, color: colors.primary })}</div><div><h2 style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>{selectedOligarque.nom}</h2><p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.muted }}>{selectedOligarque.groupe}</p><p style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, display: 'flex', alignItems: 'center', gap: '8px' }}><DollarSign size={24} />{selectedOligarque.fortune}</p></div></div><div style={{ marginBottom: '30px' }}><h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '15px', paddingBottom: '10px', borderBottom: `2px solid ${colors.cardBorder}`, display: 'flex', alignItems: 'center', gap: '10px' }}><Tv size={24} />Médias ({selectedOligarque.medias.length})</h3><div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px' }}>{selectedOligarque.medias.map((m, i) => (<div key={i} style={{ padding: '15px', background: colors.bg, border: `1px solid ${colors.cardBorder}`, borderRadius: '8px' }}><p style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>{m.type === 'TV' && <Tv size={16} />}{m.type === 'Radio' && <Radio size={16} />}{m.type === 'Presse' && <Newspaper size={16} />}{m.type === 'Publicité' && <TrendingUp size={16} />}{m.type === 'Édition' && <BookOpen size={16} />}{m.nom}</p><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, margin: '5px 0 0 0' }}>{m.type} • {m.acquisition}</p></div>))}</div></div><div><h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.danger, marginBottom: '15px', paddingBottom: '10px', borderBottom: `2px solid ${colors.danger}`, display: 'flex', alignItems: 'center', gap: '10px' }}><AlertTriangle size={24} />Conflits ({selectedOligarque.conflits.length})</h3><ul style={{ fontFamily: textFont, fontSize: fs.base, color: colors.primary, lineHeight: 1.8, paddingLeft: '0', listStyle: 'none' }}>{selectedOligarque.conflits.map((c, i) => (<li key={i} style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}><AlertCircle size={18} color={colors.danger} style={{ marginTop: '3px', flexShrink: 0 }} />{c}</li>))}</ul></div><button onClick={() => { setSelectedEntity(selectedOligarque); setActiveModule('threads'); }} style={{ marginTop: '30px', padding: '15px 30px', background: colors.primary, border: 'none', color: colors.bg, borderRadius: '8px', cursor: 'pointer', fontFamily: titleFont, fontSize: fs.base, display: 'flex', alignItems: 'center', gap: '10px' }}><Twitter size={20} />Générer un thread</button></div></div>)}
+        
+        {!selectedOligarque && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+            {oligarques.map(o => { 
+              const IconComp = o.icon; 
+              return (
+                <div 
+                  key={o.id} 
+                  onClick={() => setSelectedOligarque(o)} 
+                  style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', cursor: 'pointer', transition: 'all 0.2s' }} 
+                  onMouseEnter={e => { e.currentTarget.style.borderColor = colors.primary; e.currentTarget.style.transform = 'scale(1.02)'; }} 
+                  onMouseLeave={e => { e.currentTarget.style.borderColor = colors.cardBorder; e.currentTarget.style.transform = 'scale(1)'; }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '15px', marginBottom: '15px' }}>
+                    <div style={{ width: '60px', height: '60px', borderRadius: '50%', background: colors.bg, border: `2px solid ${colors.primary}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                      <IconComp size={28} color={colors.primary} />
+                    </div>
+                    <div>
+                      <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, margin: 0 }}>{o.nom}</h3>
+                      <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, margin: 0 }}>{o.groupe}</p>
+                    </div>
+                  </div>
+                  <p style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <DollarSign size={20} />{o.fortune}
+                  </p>
+                  <div style={{ display: 'flex', flexWrap: 'wrap', gap: '5px', marginBottom: '15px' }}>
+                    {o.secteurs.map((s, i) => (
+                      <span key={i} style={{ fontSize: fs.xs, padding: '3px 10px', background: colors.bg, border: `1px solid ${colors.cardBorder}`, borderRadius: '15px', fontFamily: textFont, color: colors.muted }}>{s}</span>
+                    ))}
+                  </div>
+                  <p style={{ fontFamily: textFont, fontSize: fs.base, color: colors.primary, marginBottom: '5px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Tv size={16} /><strong>{o.medias.length}</strong> médias
+                  </p>
+                  <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.danger, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <AlertTriangle size={16} />{o.conflits.length} conflits
+                  </p>
+                </div>
+              ); 
+            })}
+          </div>
+        )}
+        
+        {selectedOligarque && (
+          <div>
+            <button 
+              onClick={() => setSelectedOligarque(null)} 
+              style={{ padding: '10px 20px', background: 'transparent', border: `2px solid ${colors.primary}`, color: colors.primary, borderRadius: '8px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.base, marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '8px' }}
+            >
+              <ChevronLeft size={20} />Retour
+            </button>
+            <div style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '30px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', gap: '20px', marginBottom: '30px', flexWrap: 'wrap' }}>
+                <div style={{ width: '100px', height: '100px', borderRadius: '50%', background: colors.bg, border: `3px solid ${colors.primary}`, display: 'flex', alignItems: 'center', justifyContent: 'center' }}>
+                  {React.createElement(selectedOligarque.icon, { size: 48, color: colors.primary })}
+                </div>
+                <div>
+                  <h2 style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: 0 }}>{selectedOligarque.nom}</h2>
+                  <p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.muted }}>{selectedOligarque.groupe}</p>
+                  <p style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <DollarSign size={24} />{selectedOligarque.fortune}
+                  </p>
+                </div>
+              </div>
+              
+              <div style={{ marginBottom: '30px' }}>
+                <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '15px', paddingBottom: '10px', borderBottom: `2px solid ${colors.cardBorder}`, display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <Tv size={24} />Médias ({selectedOligarque.medias.length})
+                </h3>
+                <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px' }}>
+                  {selectedOligarque.medias.map((m, i) => (
+                    <div key={i} style={{ padding: '15px', background: colors.bg, border: `1px solid ${colors.cardBorder}`, borderRadius: '8px' }}>
+                      <p style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, margin: 0, display: 'flex', alignItems: 'center', gap: '8px' }}>
+                        {m.type === 'TV' && <Tv size={16} />}
+                        {m.type === 'Radio' && <Radio size={16} />}
+                        {m.type === 'Presse' && <Newspaper size={16} />}
+                        {m.type === 'Publicité' && <TrendingUp size={16} />}
+                        {m.type === 'Édition' && <BookOpen size={16} />}
+                        {m.nom}
+                      </p>
+                      <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, margin: '5px 0 0 0' }}>{m.type} • {m.acquisition}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+              
+              <div>
+                <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.danger, marginBottom: '15px', paddingBottom: '10px', borderBottom: `2px solid ${colors.danger}`, display: 'flex', alignItems: 'center', gap: '10px' }}>
+                  <AlertTriangle size={24} />Conflits ({selectedOligarque.conflits.length})
+                </h3>
+                <ul style={{ fontFamily: textFont, fontSize: fs.base, color: colors.primary, lineHeight: 1.8, paddingLeft: '0', listStyle: 'none' }}>
+                  {selectedOligarque.conflits.map((c, i) => (
+                    <li key={i} style={{ marginBottom: '12px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+                      <AlertCircle size={18} color={colors.danger} style={{ marginTop: '3px', flexShrink: 0 }} />{c}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+              
+              <button 
+                onClick={() => { setSelectedEntity(selectedOligarque); setActiveModule('threads'); }} 
+                style={{ marginTop: '30px', padding: '15px 30px', background: colors.primary, border: 'none', color: colors.bg, borderRadius: '8px', cursor: 'pointer', fontFamily: titleFont, fontSize: fs.base, display: 'flex', alignItems: 'center', gap: '10px' }}
+              >
+                <Twitter size={20} />Générer un thread
+              </button>
+            </div>
+          </div>
+        )}
       </div>
     );
   };
@@ -380,71 +613,371 @@ const App = () => {
       <div style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '30px', position: 'relative', minHeight: '500px' }}>
         <svg viewBox="0 0 400 400" style={{ width: '100%', maxWidth: '600px', margin: '0 auto', display: 'block' }}>
           <path d="M200,20 L280,40 L340,100 L350,180 L320,280 L280,350 L200,380 L120,350 L60,280 L50,180 L80,100 L120,40 Z" fill="none" stroke={colors.primary} strokeWidth="3" />
-          <circle cx="200" cy="150" r="30" fill={colors.primary} opacity="0.3" /><circle cx="200" cy="150" r="8" fill={colors.primary} />
+          <circle cx="200" cy="150" r="30" fill={colors.primary} opacity="0.3" />
+          <circle cx="200" cy="150" r="8" fill={colors.primary} />
           <text x="200" y="195" textAnchor="middle" fill={colors.primary} style={{ fontFamily: textFont, fontSize: '12px', fontWeight: 'bold' }}>PARIS</text>
           <text x="200" y="210" textAnchor="middle" fill={colors.muted} style={{ fontFamily: textFont, fontSize: '10px' }}>8 oligarques</text>
-          <circle cx="260" cy="320" r="15" fill={colors.primary} opacity="0.3" /><circle cx="260" cy="320" r="5" fill={colors.primary} />
+          <circle cx="260" cy="320" r="15" fill={colors.primary} opacity="0.3" />
+          <circle cx="260" cy="320" r="5" fill={colors.primary} />
           <text x="260" y="345" textAnchor="middle" fill={colors.primary} style={{ fontFamily: textFont, fontSize: '11px', fontWeight: 'bold' }}>MARSEILLE</text>
           <text x="260" y="358" textAnchor="middle" fill={colors.muted} style={{ fontFamily: textFont, fontSize: '9px' }}>Saadé</text>
-          <circle cx="300" cy="180" r="10" fill={colors.danger} opacity="0.3" /><circle cx="300" cy="180" r="4" fill={colors.danger} />
+          <circle cx="300" cy="180" r="10" fill={colors.danger} opacity="0.3" />
+          <circle cx="300" cy="180" r="4" fill={colors.danger} />
           <text x="340" y="183" textAnchor="start" fill={colors.danger} style={{ fontFamily: textFont, fontSize: '10px', fontWeight: 'bold' }}>GENÈVE</text>
           <text x="340" y="195" textAnchor="start" fill={colors.muted} style={{ fontFamily: textFont, fontSize: '8px' }}>Drahi (fiscal)</text>
           <text x="370" y="100" textAnchor="start" fill={colors.danger} style={{ fontFamily: textFont, fontSize: '10px', fontWeight: 'bold' }}>PRAGUE →</text>
           <text x="370" y="112" textAnchor="start" fill={colors.muted} style={{ fontFamily: textFont, fontSize: '8px' }}>Křetínský</text>
         </svg>
         <div style={{ marginTop: '30px', padding: '20px', background: colors.bg, borderRadius: '8px', border: `1px solid ${colors.cardBorder}` }}>
-          <h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}><MapPin size={20} />Concentration parisienne</h4>
-          <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, lineHeight: 1.6 }}><strong>8 des 9 oligarques</strong> ont leur siège en région parisienne (8e, 16e, Neuilly).</p>
-          <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.danger, lineHeight: 1.6, marginTop: '15px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}><AlertTriangle size={18} style={{ flexShrink: 0, marginTop: '2px' }} /><span><strong>2 résidences fiscales à l'étranger</strong> : Drahi (Suisse), Křetínský (Tchéquie).</span></p>
+          <h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <MapPin size={20} />Concentration parisienne
+          </h4>
+          <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, lineHeight: 1.6 }}>
+            <strong>8 des 9 oligarques</strong> ont leur siège en région parisienne (8e, 16e, Neuilly).
+          </p>
+          <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.danger, lineHeight: 1.6, marginTop: '15px', display: 'flex', alignItems: 'flex-start', gap: '10px' }}>
+            <AlertTriangle size={18} style={{ flexShrink: 0, marginTop: '2px' }} />
+            <span><strong>2 résidences fiscales à l'étranger</strong> : Drahi (Suisse), Křetínský (Tchéquie).</span>
+          </p>
         </div>
       </div>
       <div style={{ marginTop: '30px', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '15px' }}>
-        {[{ type: 'TV', count: oligarques.reduce((acc, o) => acc + o.medias.filter(m => m.type === 'TV').length, 0), icon: Tv }, { type: 'Radio', count: oligarques.reduce((acc, o) => acc + o.medias.filter(m => m.type === 'Radio').length, 0), icon: Radio }, { type: 'Presse', count: oligarques.reduce((acc, o) => acc + o.medias.filter(m => m.type === 'Presse').length, 0), icon: Newspaper }].map(stat => { const IconComp = stat.icon; return (<div key={stat.type} style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '8px', padding: '20px', textAlign: 'center' }}><IconComp size={40} color={colors.primary} style={{ marginBottom: '10px' }} /><p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: '10px 0' }}>{stat.count}</p><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>{stat.type}</p></div>); })}
+        {[
+          { type: 'TV', count: oligarques.reduce((acc, o) => acc + o.medias.filter(m => m.type === 'TV').length, 0), icon: Tv }, 
+          { type: 'Radio', count: oligarques.reduce((acc, o) => acc + o.medias.filter(m => m.type === 'Radio').length, 0), icon: Radio }, 
+          { type: 'Presse', count: oligarques.reduce((acc, o) => acc + o.medias.filter(m => m.type === 'Presse').length, 0), icon: Newspaper }
+        ].map(stat => { 
+          const IconComp = stat.icon; 
+          return (
+            <div key={stat.type} style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '8px', padding: '20px', textAlign: 'center' }}>
+              <IconComp size={40} color={colors.primary} style={{ marginBottom: '10px' }} />
+              <p style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, margin: '10px 0' }}>{stat.count}</p>
+              <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>{stat.type}</p>
+            </div>
+          ); 
+        })}
       </div>
     </div>
   );
 
   // ═══════════════════════════════════════════════════════════════════════════
-  // THREADS
+  // THREADS — GÉNÉRATEUR ENRICHI (4 TYPES)
   // ═══════════════════════════════════════════════════════════════════════════
   const ThreadsModule = () => {
+    const [threadType, setThreadType] = useState(null);
     const [selectedSubject, setSelectedSubject] = useState(selectedEntity || null);
     const [generatedThread, setGeneratedThread] = useState(null);
     const [copied, setCopied] = useState(false);
 
+    const threadTypes = [
+      { id: 'oligarque', label: 'Portrait oligarque', icon: Crown, desc: 'Qui possède nos médias ?' },
+      { id: 'loi', label: 'Décryptage loi', icon: Gavel, desc: 'Avant/après une loi' },
+      { id: 'evenement', label: 'Événement', icon: Calendar, desc: 'Contexte et analyse' },
+      { id: 'thematique', label: 'Thématique', icon: Lightbulb, desc: 'Sujets transversaux' },
+    ];
+
+    const thematiques = [
+      { id: 'concentration', titre: 'La concentration des médias', desc: '9 milliardaires contrôlent l\'info' },
+      { id: 'fiscal', titre: 'L\'évasion fiscale', desc: 'Quand les patrons de presse fuient le fisc' },
+      { id: 'cnews', titre: 'Le cas CNews', desc: 'De iTélé à la chaîne Zemmour' },
+      { id: 'bollore', titre: 'L\'empire Bolloré', desc: 'La stratégie de conquête médiatique' },
+    ];
+
     const generateThread = () => {
-      if (!selectedSubject || !selectedSubject.medias) return;
-      const o = selectedSubject;
-      const thread = [
-        `🧵 THREAD : Qui est vraiment ${o.nom} et pourquoi possède-t-il nos médias ?\n\n⬇️`,
-        `1/ ${o.nom} pèse ${o.fortune}. Sa fortune vient de ${o.secteurs.slice(0, -1).join(', ')}.\n\nMais depuis quelques années, il s'intéresse de très près à nos médias.`,
-        `2/ Son empire médiatique comprend :\n\n${o.medias.map(m => `• ${m.nom} (${m.type})`).join('\n')}\n\nSoit ${o.medias.length} médias.`,
-        `3/ Les conflits d'intérêts :\n\n${o.conflits.map(c => `• ${c}`).join('\n')}`,
-        `4/ Face à cette concentration, Le Projet propose :\n\n✅ Limiter les parts de marché à 30%\n✅ Interdire aux entreprises sous marchés publics de posséder des médias\n✅ Garantir l'indépendance des rédactions`,
-        `5/ L'information ne devrait pas être une marchandise.\n\nPartagez ce thread pour informer.\n\n🐝 LeProjet\n\n#Médias #Oligarchie #InformationLibre`,
-      ];
+      if (!threadType) return;
+      let thread = [];
+
+      if (threadType === 'oligarque' && selectedSubject?.medias) {
+        const o = selectedSubject;
+        thread = [
+          `🧵 THREAD : Qui est vraiment ${o.nom} et pourquoi possède-t-il nos médias ?\n\n⬇️`,
+          `1/ ${o.nom} pèse ${o.fortune}. Sa fortune vient de : ${o.secteurs.join(', ')}.\n\nMais depuis quelques années, il s'intéresse de très près à nos médias. Pourquoi ?`,
+          `2/ Son empire médiatique :\n\n${o.medias.slice(0, 5).map(m => `• ${m.nom} (${m.type})`).join('\n')}\n\nSoit ${o.medias.length} médias qui touchent des millions de Français.`,
+          `3/ Les conflits d'intérêts :\n\n${o.conflits.slice(0, 2).map(c => `⚠️ ${c}`).join('\n\n')}`,
+          `4/ Ce que nous proposons :\n\n✅ Plafonner les parts de marché à 30%\n✅ Interdire la possession de médias aux entreprises sous marchés publics\n✅ Garantir l'indépendance des rédactions`,
+          `5/ L'information n'est pas une marchandise.\n\nRT pour informer 🔄\n\n🐝\n\n#Médias #Concentration #Information`,
+        ];
+      } else if (threadType === 'loi' && selectedSubject?.avant) {
+        const l = selectedSubject;
+        thread = [
+          `🧵 THREAD : ${l.nom}\n\nCette loi a changé les règles du jeu. Décryptage ⬇️`,
+          `1/ 📅 Adoptée le ${new Date(l.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}\n\nContexte : ${l.avant}`,
+          `2/ Ce qui a changé :\n\n${l.apres}`,
+          `3/ ⚠️ Les critiques :\n\n${l.critique}`,
+          `4/ 🇪🇺 Et en Europe ?\n\n${l.lienUE}`,
+          `5/ Rester informé, c'est rester libre.\n\nRT si vous pensez que tout le monde devrait savoir 🔄\n\n🐝\n\n#Loi #Décryptage #Information`,
+        ];
+      } else if (threadType === 'evenement' && selectedSubject?.titre) {
+        const e = selectedSubject;
+        thread = [
+          `🧵 THREAD : ${e.titre}\n\n📅 ${new Date(e.date).toLocaleDateString('fr-FR', { day: 'numeric', month: 'long', year: 'numeric' })}\n\n⬇️`,
+          `1/ Ce qui s'est passé :\n\n${e.description}`,
+          `2/ Pourquoi c'est important :\n\nCet événement s'inscrit dans une dynamique plus large de transformation du paysage médiatique français.`,
+          `3/ Les médias en ont-ils parlé correctement ?\n\nQuand 9 milliardaires possèdent la majorité des médias, la couverture de certains sujets pose question.`,
+          `4/ Pour comprendre ces enjeux, il faut connecter les points.\n\nC'est notre mission 🐝\n\nRT pour diffuser 🔄\n\n#Médias #Information`,
+        ];
+      } else if (threadType === 'thematique' && selectedSubject?.id) {
+        if (selectedSubject.id === 'concentration') {
+          thread = [
+            `🧵 THREAD : 9 milliardaires contrôlent l'information en France\n\nComment en est-on arrivé là ? ⬇️`,
+            `1/ En 2025, 9 hommes possèdent la quasi-totalité des médias privés français :\n\n• Bolloré (CNews, Canal+, Europe 1, JDD...)\n• Arnault (Les Échos, Le Parisien)\n• Niel (Le Monde, L'Obs)\n• Drahi (BFM, RMC)\n...`,
+            `2/ Leur fortune cumulée : plus de 350 milliards €\n\nLeurs intérêts : industrie, luxe, BTP, télécoms, défense...\n\nLeur point commun : posséder des médias leur donne un pouvoir d'influence considérable.`,
+            `3/ Les conséquences :\n\n⚠️ Conflits d'intérêts permanents\n⚠️ Autocensure des rédactions\n⚠️ Uniformisation de l'information\n⚠️ Affaiblissement du pluralisme`,
+            `4/ Ce n'est pas une fatalité.\n\nD'autres modèles existent : coopératives, médias indépendants, financement participatif.\n\nL'information est un bien commun 🐝`,
+            `5/ Partagez ce thread pour que chacun sache qui l'informe.\n\nRT 🔄\n\n#Médias #Oligarchie #Concentration #Information`,
+          ];
+        } else if (selectedSubject.id === 'fiscal') {
+          thread = [
+            `🧵 THREAD : Quand les patrons de presse fuient le fisc français\n\n⬇️`,
+            `1/ Parmi les 9 oligarques qui possèdent nos médias, certains ont choisi de résider fiscalement... ailleurs.\n\n🇨🇭 Patrick Drahi → Suisse\n🇨🇿 Daniel Křetínský → République Tchèque`,
+            `2/ Patrick Drahi (BFM, RMC) :\n\nRésident suisse, il contrôle des médias qui parlent quotidiennement de la France... sans y payer ses impôts.`,
+            `3/ Daniel Křetínský (Marianne, Le Monde) :\n\nMilliardaire tchèque du charbon, il monte progressivement au capital de nos médias depuis Prague.`,
+            `4/ Question : peut-on faire confiance à des médias dont les propriétaires fuient la solidarité nationale ?\n\nL'information devrait-elle dépendre de ces choix ?`,
+            `5/ L'information est un bien commun, pas un outil d'optimisation fiscale.\n\nRT pour diffuser 🔄\n\n🐝\n\n#Médias #Fiscal #Transparence`,
+          ];
+        } else if (selectedSubject.id === 'cnews') {
+          thread = [
+            `🧵 THREAD : De iTélé à CNews — Comment Bolloré a transformé une chaîne info en machine idéologique\n\n⬇️`,
+            `1/ 2016 : Bolloré prend le contrôle d'iTélé\n\nRésultat : grève historique, 100 journalistes partent.\n\nLa chaîne est renommée CNews en 2017.`,
+            `2/ 2019-2021 : Éric Zemmour obtient une émission quotidienne\n\nTemps d'antenne record pour des positions d'extrême droite.\n\nL'ARCOM s'inquiète du pluralisme.`,
+            `3/ 2022-2024 : Mises en demeure successives\n\nL'ARCOM sanctionne CNews pour manquement au pluralisme politique.\n\nMais les amendes ne changent rien.`,
+            `4/ Aujourd'hui : CNews est devenue la 2e chaîne info de France\n\nUne ligne éditoriale assumée au service d'une vision politique.\n\nEst-ce encore du journalisme ?`,
+            `5/ Quand un milliardaire peut transformer une chaîne info en outil de propagande, c'est la démocratie qui recule.\n\nRT 🔄\n\n🐝\n\n#CNews #Bolloré #Médias`,
+          ];
+        } else if (selectedSubject.id === 'bollore') {
+          thread = [
+            `🧵 THREAD : Vincent Bolloré — La stratégie de conquête médiatique\n\n⬇️`,
+            `1/ Fortune : 10 milliards €\nSecteurs : Transport, logistique, publicité (Havas)\n\nMais c'est dans les médias qu'il concentre désormais son énergie.`,
+            `2/ Son empire en 2025 :\n\n📺 Canal+, C8, CNews, CStar\n📻 Europe 1\n📰 JDD, Paris Match, Prisma Media\n📚 Hachette (1er éditeur français)\n\nUne galaxie complète.`,
+            `3/ Sa méthode :\n\n1. Racheter\n2. Licencier les journalistes critiques\n3. Imposer une ligne éditoriale\n4. Répéter`,
+            `4/ Les victimes :\n\n• iTélé (2016) : 100 départs\n• Europe 1 (2021) : purge de la rédaction\n• JDD (2023) : grève de 40 jours\n• Paris Match : départs en série`,
+            `5/ Un seul homme ne devrait pas pouvoir contrôler autant de voix.\n\nL'information n'appartient à personne.\n\nRT 🔄\n\n🐝\n\n#Bolloré #Médias #Concentration`,
+          ];
+        }
+      }
+
       setGeneratedThread(thread);
     };
 
-    const copyThread = () => { if (!generatedThread) return; navigator.clipboard.writeText(generatedThread.join('\n\n---\n\n')); setCopied(true); setTimeout(() => setCopied(false), 2000); };
+    const copyThread = () => { 
+      if (!generatedThread) return; 
+      navigator.clipboard.writeText(generatedThread.join('\n\n---\n\n')); 
+      setCopied(true); 
+      setTimeout(() => setCopied(false), 2000); 
+    };
 
-    useEffect(() => { if (selectedEntity) { setSelectedSubject(selectedEntity); } }, [selectedEntity]);
+    useEffect(() => { 
+      if (selectedEntity) { 
+        setSelectedSubject(selectedEntity); 
+        if (selectedEntity.medias) setThreadType('oligarque');
+        else if (selectedEntity.avant) setThreadType('loi');
+      } 
+    }, [selectedEntity]);
 
     return (
       <div style={{ padding: '30px 20px', maxWidth: '1000px', margin: '0 auto' }}>
         <div style={{ textAlign: 'center', marginBottom: '30px' }}>
           <Twitter size={48} color={colors.primary} strokeWidth={1.5} style={{ marginBottom: '15px' }} />
           <h2 style={{ fontFamily: titleFont, fontSize: fs.xxl, color: colors.primary, marginBottom: '10px' }}>GÉNÉRATEUR DE THREADS</h2>
-          <p style={{ fontFamily: textFont, fontSize: fs.base, color: colors.muted }}>Créez des threads structurés</p>
+          <p style={{ fontFamily: textFont, fontSize: fs.base, color: colors.muted }}>Créez des threads pour informer</p>
         </div>
+
+        {/* Étape 1 : Type de thread */}
         <div style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', marginBottom: '20px' }}>
-          <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}><CircleDot size={20} />Choisir un oligarque</h3>
-          <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
-            {oligarques.map(o => { const IconComp = o.icon; return (<button key={o.id} onClick={() => { setSelectedSubject(o); setGeneratedThread(null); }} style={{ padding: '10px 15px', background: selectedSubject?.id === o.id ? colors.primary : 'transparent', border: `1px solid ${colors.primary}`, color: selectedSubject?.id === o.id ? colors.bg : colors.primary, borderRadius: '6px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.sm, display: 'flex', alignItems: 'center', gap: '8px' }}><IconComp size={16} />{o.nom}</button>); })}
+          <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+            <CircleDot size={20} />1. Choisir un type
+          </h3>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(200px, 1fr))', gap: '10px' }}>
+            {threadTypes.map(t => { 
+              const IconComp = t.icon; 
+              return (
+                <button 
+                  key={t.id} 
+                  onClick={() => { setThreadType(t.id); setSelectedSubject(null); setGeneratedThread(null); }} 
+                  style={{ 
+                    padding: '15px', 
+                    background: threadType === t.id ? colors.primary : 'transparent', 
+                    border: `2px solid ${colors.primary}`, 
+                    color: threadType === t.id ? colors.bg : colors.primary, 
+                    borderRadius: '8px', 
+                    cursor: 'pointer', 
+                    fontFamily: textFont, 
+                    fontSize: fs.sm, 
+                    textAlign: 'left' 
+                  }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'center', gap: '10px', marginBottom: '5px' }}>
+                    <IconComp size={20} />
+                    <strong>{t.label}</strong>
+                  </div>
+                  <p style={{ fontSize: fs.xs, opacity: 0.8, margin: 0 }}>{t.desc}</p>
+                </button>
+              ); 
+            })}
           </div>
         </div>
-        {selectedSubject && (<div style={{ textAlign: 'center', marginBottom: '30px' }}><button onClick={generateThread} style={{ padding: '15px 40px', background: colors.primary, border: 'none', color: colors.bg, borderRadius: '8px', cursor: 'pointer', fontFamily: titleFont, fontSize: fs.lg, display: 'inline-flex', alignItems: 'center', gap: '10px' }}><Hash size={22} />GÉNÉRER LE THREAD</button></div>)}
-        {generatedThread && (<div style={{ background: colors.cardBg, border: `2px solid ${colors.primary}`, borderRadius: '12px', padding: '25px' }}><div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px' }}><h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, display: 'flex', alignItems: 'center', gap: '10px' }}><MessageSquare size={20} />Thread ({generatedThread.length} tweets)</h3><button onClick={copyThread} style={{ padding: '10px 20px', background: copied ? '#4CAF50' : 'transparent', border: `2px solid ${copied ? '#4CAF50' : colors.primary}`, color: copied ? '#fff' : colors.primary, borderRadius: '6px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.sm, display: 'flex', alignItems: 'center', gap: '8px' }}>{copied ? <Check size={18} /> : <Copy size={18} />}{copied ? 'Copié !' : 'Copier tout'}</button></div>{generatedThread.map((tweet, i) => (<div key={i} style={{ background: colors.bg, border: `1px solid ${colors.cardBorder}`, borderRadius: '8px', padding: '15px', marginBottom: '10px' }}><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, whiteSpace: 'pre-line', lineHeight: 1.6, margin: 0 }}>{tweet}</p><p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginTop: '10px', textAlign: 'right' }}>{tweet.length}/280</p></div>))}</div>)}
+
+        {/* Étape 2 : Sélection du sujet */}
+        {threadType && (
+          <div style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', marginBottom: '20px' }}>
+            <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '10px' }}>
+              <CircleDot size={20} />2. Choisir le sujet
+            </h3>
+            <div style={{ display: 'flex', gap: '10px', flexWrap: 'wrap' }}>
+              {threadType === 'oligarque' && oligarques.map(o => { 
+                const IconComp = o.icon; 
+                return (
+                  <button 
+                    key={o.id} 
+                    onClick={() => { setSelectedSubject(o); setGeneratedThread(null); }} 
+                    style={{ 
+                      padding: '10px 15px', 
+                      background: selectedSubject?.id === o.id ? colors.primary : 'transparent', 
+                      border: `1px solid ${colors.primary}`, 
+                      color: selectedSubject?.id === o.id ? colors.bg : colors.primary, 
+                      borderRadius: '6px', 
+                      cursor: 'pointer', 
+                      fontFamily: textFont, 
+                      fontSize: fs.sm, 
+                      display: 'flex', 
+                      alignItems: 'center', 
+                      gap: '8px' 
+                    }}
+                  >
+                    <IconComp size={16} />{o.nom}
+                  </button>
+                ); 
+              })}
+              {threadType === 'loi' && loisComparees.map(l => (
+                <button 
+                  key={l.id} 
+                  onClick={() => { setSelectedSubject(l); setGeneratedThread(null); }} 
+                  style={{ 
+                    padding: '10px 15px', 
+                    background: selectedSubject?.id === l.id ? colors.primary : 'transparent', 
+                    border: `1px solid ${colors.primary}`, 
+                    color: selectedSubject?.id === l.id ? colors.bg : colors.primary, 
+                    borderRadius: '6px', 
+                    cursor: 'pointer', 
+                    fontFamily: textFont, 
+                    fontSize: fs.sm 
+                  }}
+                >
+                  {l.nom}
+                </button>
+              ))}
+              {threadType === 'evenement' && timelineEvents.map((e, i) => (
+                <button 
+                  key={i} 
+                  onClick={() => { setSelectedSubject(e); setGeneratedThread(null); }} 
+                  style={{ 
+                    padding: '10px 15px', 
+                    background: selectedSubject?.titre === e.titre ? colors.primary : 'transparent', 
+                    border: `1px solid ${colors.primary}`, 
+                    color: selectedSubject?.titre === e.titre ? colors.bg : colors.primary, 
+                    borderRadius: '6px', 
+                    cursor: 'pointer', 
+                    fontFamily: textFont, 
+                    fontSize: fs.sm 
+                  }}
+                >
+                  {e.titre}
+                </button>
+              ))}
+              {threadType === 'thematique' && thematiques.map(t => (
+                <button 
+                  key={t.id} 
+                  onClick={() => { setSelectedSubject(t); setGeneratedThread(null); }} 
+                  style={{ 
+                    padding: '12px 18px', 
+                    background: selectedSubject?.id === t.id ? colors.primary : 'transparent', 
+                    border: `1px solid ${colors.primary}`, 
+                    color: selectedSubject?.id === t.id ? colors.bg : colors.primary, 
+                    borderRadius: '6px', 
+                    cursor: 'pointer', 
+                    fontFamily: textFont, 
+                    fontSize: fs.sm,
+                    textAlign: 'left'
+                  }}
+                >
+                  <strong>{t.titre}</strong>
+                  <p style={{ fontSize: fs.xs, opacity: 0.8, margin: '5px 0 0 0' }}>{t.desc}</p>
+                </button>
+              ))}
+            </div>
+          </div>
+        )}
+
+        {/* Bouton générer */}
+        {threadType && selectedSubject && (
+          <div style={{ textAlign: 'center', marginBottom: '30px' }}>
+            <button 
+              onClick={generateThread} 
+              style={{ 
+                padding: '15px 40px', 
+                background: colors.primary, 
+                border: 'none', 
+                color: colors.bg, 
+                borderRadius: '8px', 
+                cursor: 'pointer', 
+                fontFamily: titleFont, 
+                fontSize: fs.lg, 
+                display: 'inline-flex', 
+                alignItems: 'center', 
+                gap: '10px' 
+              }}
+            >
+              <Hash size={22} />GÉNÉRER LE THREAD
+            </button>
+          </div>
+        )}
+
+        {/* Thread généré */}
+        {generatedThread && generatedThread.length > 0 && (
+          <div style={{ background: colors.cardBg, border: `2px solid ${colors.primary}`, borderRadius: '12px', padding: '25px' }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '20px', flexWrap: 'wrap', gap: '10px' }}>
+              <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, display: 'flex', alignItems: 'center', gap: '10px' }}>
+                <MessageSquare size={20} />Thread ({generatedThread.length} tweets)
+              </h3>
+              <button 
+                onClick={copyThread} 
+                style={{ 
+                  padding: '10px 20px', 
+                  background: copied ? '#4CAF50' : 'transparent', 
+                  border: `2px solid ${copied ? '#4CAF50' : colors.primary}`, 
+                  color: copied ? '#fff' : colors.primary, 
+                  borderRadius: '6px', 
+                  cursor: 'pointer', 
+                  fontFamily: textFont, 
+                  fontSize: fs.sm, 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px' 
+                }}
+              >
+                {copied ? <Check size={18} /> : <Copy size={18} />}
+                {copied ? 'Copié !' : 'Copier tout'}
+              </button>
+            </div>
+            {generatedThread.map((tweet, i) => (
+              <div 
+                key={i} 
+                style={{ 
+                  background: colors.bg, 
+                  border: `1px solid ${colors.cardBorder}`, 
+                  borderRadius: '8px', 
+                  padding: '15px', 
+                  marginBottom: '10px' 
+                }}
+              >
+                <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, whiteSpace: 'pre-line', lineHeight: 1.6, margin: 0 }}>{tweet}</p>
+                <p style={{ fontFamily: textFont, fontSize: fs.xs, color: tweet.length > 280 ? colors.danger : colors.muted, marginTop: '10px', textAlign: 'right' }}>
+                  {tweet.length}/280 {tweet.length > 280 && '⚠️'}
+                </p>
+              </div>
+            ))}
+          </div>
+        )}
       </div>
     );
   };
@@ -455,7 +988,12 @@ const App = () => {
   const ComparateurModule = () => {
     const [selectedLoi, setSelectedLoi] = useState(null);
     const [filterCat, setFilterCat] = useState('all');
-    const categories = [{ id: 'all', label: 'Toutes', icon: Filter }, { id: 'information', label: 'Info', icon: Newspaper }, { id: 'presse', label: 'Presse', icon: FileText }, { id: 'numerique', label: 'Numérique', icon: Globe }];
+    const categories = [
+      { id: 'all', label: 'Toutes', icon: Filter }, 
+      { id: 'information', label: 'Info', icon: Newspaper }, 
+      { id: 'presse', label: 'Presse', icon: FileText }, 
+      { id: 'numerique', label: 'Numérique', icon: Globe }
+    ];
     const filteredLois = loisComparees.filter(l => filterCat === 'all' || l.categorie === filterCat);
 
     return (
@@ -466,10 +1004,94 @@ const App = () => {
           <p style={{ fontFamily: textFont, fontSize: fs.base, color: colors.muted }}>Avant / Après depuis 2017</p>
         </div>
         <div style={{ display: 'flex', gap: '10px', justifyContent: 'center', flexWrap: 'wrap', marginBottom: '30px' }}>
-          {categories.map(cat => { const IconComp = cat.icon; return (<button key={cat.id} onClick={() => setFilterCat(cat.id)} style={{ padding: '10px 18px', background: filterCat === cat.id ? colors.primary : 'transparent', border: `1px solid ${colors.primary}`, color: filterCat === cat.id ? colors.bg : colors.primary, borderRadius: '20px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.sm, display: 'flex', alignItems: 'center', gap: '8px' }}><IconComp size={16} />{cat.label}</button>); })}
+          {categories.map(cat => { 
+            const IconComp = cat.icon; 
+            return (
+              <button 
+                key={cat.id} 
+                onClick={() => setFilterCat(cat.id)} 
+                style={{ 
+                  padding: '10px 18px', 
+                  background: filterCat === cat.id ? colors.primary : 'transparent', 
+                  border: `1px solid ${colors.primary}`, 
+                  color: filterCat === cat.id ? colors.bg : colors.primary, 
+                  borderRadius: '20px', 
+                  cursor: 'pointer', 
+                  fontFamily: textFont, 
+                  fontSize: fs.sm, 
+                  display: 'flex', 
+                  alignItems: 'center', 
+                  gap: '8px' 
+                }}
+              >
+                <IconComp size={16} />{cat.label}
+              </button>
+            ); 
+          })}
         </div>
-        {!selectedLoi && (<div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>{filteredLois.map(loi => (<div key={loi.id} onClick={() => setSelectedLoi(loi)} style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', cursor: 'pointer', transition: 'all 0.2s' }} onMouseEnter={e => { e.currentTarget.style.borderColor = colors.primary; }} onMouseLeave={e => { e.currentTarget.style.borderColor = colors.cardBorder; }}><p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}><Clock size={14} />{new Date(loi.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' })}</p><h3 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '15px' }}>{loi.nom}</h3><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, lineHeight: 1.5 }}>{loi.critique.slice(0, 80)}...</p></div>))}</div>)}
-        {selectedLoi && (<div><button onClick={() => setSelectedLoi(null)} style={{ padding: '10px 20px', background: 'transparent', border: `2px solid ${colors.primary}`, color: colors.primary, borderRadius: '8px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.base, marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '8px' }}><ChevronLeft size={20} />Retour</button><div style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '30px' }}><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}><Clock size={16} />{new Date(selectedLoi.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}</p><h2 style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, marginBottom: '30px' }}>{selectedLoi.nom}</h2><div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '30px' }}><div style={{ padding: '20px', background: colors.bg, border: `2px solid ${colors.danger}`, borderRadius: '8px' }}><h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.danger, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}><EyeOff size={20} />AVANT</h4><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, lineHeight: 1.6 }}>{selectedLoi.avant}</p></div><div style={{ padding: '20px', background: colors.bg, border: `2px solid ${colors.bonus}`, borderRadius: '8px' }}><h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.bonus, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}><Eye size={20} />APRÈS</h4><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, lineHeight: 1.6 }}>{selectedLoi.apres}</p></div></div><div style={{ padding: '20px', background: colors.bg, border: `2px solid ${colors.cardBorder}`, borderRadius: '8px', marginBottom: '20px' }}><h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}><Quote size={20} />Analyse critique</h4><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, lineHeight: 1.6 }}>{selectedLoi.critique}</p></div><div style={{ padding: '20px', background: colors.bg, border: `2px solid ${colors.primary}`, borderRadius: '8px' }}><h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}><Globe size={20} />Europe</h4><p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, lineHeight: 1.6 }}>{selectedLoi.lienUE}</p></div></div></div>)}
+        
+        {!selectedLoi && (
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))', gap: '20px' }}>
+            {filteredLois.map(loi => (
+              <div 
+                key={loi.id} 
+                onClick={() => setSelectedLoi(loi)} 
+                style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', cursor: 'pointer', transition: 'all 0.2s' }} 
+                onMouseEnter={e => { e.currentTarget.style.borderColor = colors.primary; }} 
+                onMouseLeave={e => { e.currentTarget.style.borderColor = colors.cardBorder; }}
+              >
+                <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '6px' }}>
+                  <Clock size={14} />{new Date(loi.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long' })}
+                </p>
+                <h3 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '15px' }}>{loi.nom}</h3>
+                <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, lineHeight: 1.5 }}>{loi.critique.slice(0, 80)}...</p>
+              </div>
+            ))}
+          </div>
+        )}
+        
+        {selectedLoi && (
+          <div>
+            <button 
+              onClick={() => setSelectedLoi(null)} 
+              style={{ padding: '10px 20px', background: 'transparent', border: `2px solid ${colors.primary}`, color: colors.primary, borderRadius: '8px', cursor: 'pointer', fontFamily: textFont, fontSize: fs.base, marginBottom: '30px', display: 'flex', alignItems: 'center', gap: '8px' }}
+            >
+              <ChevronLeft size={20} />Retour
+            </button>
+            <div style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '30px' }}>
+              <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted, marginBottom: '10px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                <Clock size={16} />{new Date(selectedLoi.date).toLocaleDateString('fr-FR', { year: 'numeric', month: 'long', day: 'numeric' })}
+              </p>
+              <h2 style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.primary, marginBottom: '30px' }}>{selectedLoi.nom}</h2>
+              <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '20px', marginBottom: '30px' }}>
+                <div style={{ padding: '20px', background: colors.bg, border: `2px solid ${colors.danger}`, borderRadius: '8px' }}>
+                  <h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.danger, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <EyeOff size={20} />AVANT
+                  </h4>
+                  <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, lineHeight: 1.6 }}>{selectedLoi.avant}</p>
+                </div>
+                <div style={{ padding: '20px', background: colors.bg, border: `2px solid ${colors.bonus}`, borderRadius: '8px' }}>
+                  <h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.bonus, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                    <Eye size={20} />APRÈS
+                  </h4>
+                  <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, lineHeight: 1.6 }}>{selectedLoi.apres}</p>
+                </div>
+              </div>
+              <div style={{ padding: '20px', background: colors.bg, border: `2px solid ${colors.cardBorder}`, borderRadius: '8px', marginBottom: '20px' }}>
+                <h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Quote size={20} />Analyse critique
+                </h4>
+                <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, lineHeight: 1.6 }}>{selectedLoi.critique}</p>
+              </div>
+              <div style={{ padding: '20px', background: colors.bg, border: `2px solid ${colors.primary}`, borderRadius: '8px' }}>
+                <h4 style={{ fontFamily: titleFont, fontSize: fs.base, color: colors.primary, marginBottom: '15px', display: 'flex', alignItems: 'center', gap: '8px' }}>
+                  <Globe size={20} />Europe
+                </h4>
+                <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.primary, lineHeight: 1.6 }}>{selectedLoi.lienUE}</p>
+              </div>
+            </div>
+          </div>
+        )}
       </div>
     );
   };
@@ -487,10 +1109,28 @@ const App = () => {
       <div style={{ background: colors.cardBg, border: `2px solid ${colors.primary}`, borderRadius: '12px', padding: '30px', marginBottom: '30px' }}>
         <p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.primary, lineHeight: 1.8, textAlign: 'center', fontStyle: 'italic' }}>"{projetR75.introduction}"</p>
       </div>
-      {projetR75.axes.map((axe, i) => { const IconComp = axe.icon; return (<div key={i} style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', marginBottom: '20px' }}><h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '20px', paddingBottom: '15px', borderBottom: `2px solid ${colors.cardBorder}`, display: 'flex', alignItems: 'center', gap: '12px' }}><IconComp size={28} />{axe.titre}</h3><ul style={{ fontFamily: textFont, fontSize: fs.base, color: colors.primary, lineHeight: 1.8, paddingLeft: '0', listStyle: 'none' }}>{axe.propositions.map((prop, j) => (<li key={j} style={{ marginBottom: '15px', paddingLeft: '35px', position: 'relative', display: 'flex', alignItems: 'flex-start', gap: '12px' }}><CheckCircle size={20} color={colors.primary} style={{ position: 'absolute', left: 0, top: '2px' }} />{prop}</li>))}</ul></div>); })}
+      {projetR75.axes.map((axe, i) => { 
+        const IconComp = axe.icon; 
+        return (
+          <div key={i} style={{ background: colors.cardBg, border: `2px solid ${colors.cardBorder}`, borderRadius: '12px', padding: '25px', marginBottom: '20px' }}>
+            <h3 style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary, marginBottom: '20px', paddingBottom: '15px', borderBottom: `2px solid ${colors.cardBorder}`, display: 'flex', alignItems: 'center', gap: '12px' }}>
+              <IconComp size={28} />{axe.titre}
+            </h3>
+            <ul style={{ fontFamily: textFont, fontSize: fs.base, color: colors.primary, lineHeight: 1.8, paddingLeft: '0', listStyle: 'none' }}>
+              {axe.propositions.map((prop, j) => (
+                <li key={j} style={{ marginBottom: '15px', paddingLeft: '35px', position: 'relative', display: 'flex', alignItems: 'flex-start', gap: '12px' }}>
+                  <CheckCircle size={20} color={colors.primary} style={{ position: 'absolute', left: 0, top: '2px' }} />{prop}
+                </li>
+              ))}
+            </ul>
+          </div>
+        ); 
+      })}
       <div style={{ background: colors.primary, borderRadius: '12px', padding: '30px', marginTop: '30px' }}>
         <p style={{ fontFamily: textFont, fontSize: fs.lg, color: colors.bg, lineHeight: 1.8, textAlign: 'center' }}>{projetR75.conclusion}</p>
-        <p style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.bg, textAlign: 'center', marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}><Hexagon size={28} />Butiner l'information, cultiver le débat</p>
+        <p style={{ fontFamily: titleFont, fontSize: fs.xl, color: colors.bg, textAlign: 'center', marginTop: '20px', display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px' }}>
+          <Hexagon size={28} />Butiner l'information, cultiver le débat
+        </p>
       </div>
     </div>
   );
@@ -522,7 +1162,10 @@ const App = () => {
         {activeModule === 'projet' && <ProjetModule />}
       </main>
       <footer style={{ background: colors.cardBg, borderTop: `2px solid ${colors.cardBorder}`, padding: '30px 20px', textAlign: 'center' }}>
-        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '10px' }}><Hexagon size={24} color={colors.primary} /><p style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary }}>OBSERVATOIRE CITOYEN R75</p></div>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', gap: '10px', marginBottom: '10px' }}>
+          <Hexagon size={24} color={colors.primary} />
+          <p style={{ fontFamily: titleFont, fontSize: fs.lg, color: colors.primary }}>OBSERVATOIRE CITOYEN R75</p>
+        </div>
         <p style={{ fontFamily: textFont, fontSize: fs.sm, color: colors.muted }}>Données vérifiables</p>
         <p style={{ fontFamily: textFont, fontSize: fs.xs, color: colors.muted, marginTop: '15px' }}>© 2026 R75</p>
       </footer>
